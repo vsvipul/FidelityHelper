@@ -3,6 +3,7 @@
     "name": "Fidelity Scrapper",
     "description": "Scrape Fidelity stock data.",
     "version": "1.0",
+    "icons": "icons/piggy_bank.jpg"
     "action": {
         "default_popup": "popup.html"
     },
