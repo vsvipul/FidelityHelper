@@ -23,7 +23,8 @@ function scrapeStocksDataFromPage() {
     }
 
     var x = table.rows[0].insertCell(-1)
-    x.innerText = "Tax"
+    x.innerText = "Approx. Tax"
+    x.className = "fd-table--header-cell"
 
     for (var i = 1; i < table.rows.length; i++) {
         var row = {};
@@ -43,6 +44,7 @@ function scrapeStocksDataFromPage() {
 
         //Calculate tax and insert
         let tmp = table.rows[i].insertCell(-1)
+        tmp.className = "fd-table--cell"
         
         const buyDate = processedRow["buyDate"]
         const toDate = new Date()
