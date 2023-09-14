@@ -5,3 +5,13 @@ body {
 .center {
     text-align: center;
 }
+
+.outer {
+  display: block;
+}
+
+.inner {
+  margin: auto;
+  padding-bottom: 10px;
+  float: left;
+}
