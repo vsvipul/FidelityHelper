@@ -1,24 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fidelity Data</title>
-</head>
-<body>
-    Fidelity Data
-    <div class="center">
-	    <label for "slab"> Select your tax slab </label>
-    	<select name="slab" id="slabSelect">
-    		<option value="0.2">20</option>
-    		<option value="0.3">30</option>
-    		<option value="0.34">34</option>
-    	</select>
-        
-        <button id="scrapestocks">Scrape Data from</button>
-        <ul id="stockslist"></ul>
-        <script src="popup.js"></script>
-    </div>
-</body>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Fidelity Helper</title>
+        <style>
+            .bg-body {
+                min-height:200px;
+                min-width:300px;
+            }
+            .bg-body::before {
+                content: "";
+                background-image: url('icons/bg.jpg');
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+                opacity: 0.5;
+                z-index: -1;
+            }
+        </style>
+    </head>
+    <body class="bg-body">
+        <h3 class="text-center mt-5">Fidelity Helper</h3>
+        <div class="text-center mx-3 my-5">
+            <label for="slab"> Select your tax slab </label>
+            <select name="slab" id="slabSelect">
+                <option value="0.2">20</option>
+                <option value="0.3">30</option>
+                <option value="0.34">34</option>
+            </select>
+            
+            <button id="scrapestocks">Execute</button>
+            <ul id="stockslist"></ul>
+            <script src="popup.js"></script>
+        </div>
+    </body>
 </html>
