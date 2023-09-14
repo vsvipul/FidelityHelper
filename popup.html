@@ -9,7 +9,14 @@
 <body>
     Fidelity Data
     <div class="center">
-        <button id="scrapestocks">Scrape Data from Page</button>
+	    <label for "slab"> Select your tax slab </label>
+    	<select name="slab" id="slabSelect">
+    		<option value="0.2">20</option>
+    		<option value="0.3">30</option>
+    		<option value="0.34">34</option>
+    	</select>
+        
+        <button id="scrapestocks">Scrape Data from</button>
         <ul id="stockslist"></ul>
         <script src="popup.js"></script>
     </div>
