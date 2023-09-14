@@ -1,5 +1,6 @@
 let scrapeStocks = document.getElementById('scrapestocks');
 
+
 scrapeStocks.addEventListener("click", async () => {
     // Get current active tab
     let [tab] = await chrome.tabs.query({active: true, currentWindow: true})
@@ -16,11 +17,6 @@ function getSlab()
 {
 	var slabRateStr = document.querySelector('#slabSelect').value;
 	return slabRateStr;
-}
-
-//TODO clear the previously appended columns before reload.
-function deleteColumn() {
-
 }
 
 //Function to scrape stock data from page
@@ -53,6 +49,12 @@ function scrapeStocksDataFromPage(slab) {
         }
     }
 
+    // Delete if column already exists
+    if (document.querySelectorAll("[class=fd-table--table]")[1].firstElementChild.firstElementChild.lastElementChild.textContent == 'Approx. Tax') {
+        document.querySelectorAll("[class=fd-table--table]")[1].id = "random-x-id"
+        document.querySelectorAll("#random-x-id th:last-child, #random-x-id td:last-child").forEach(el => el.remove())
+    }
+
     var table = document.querySelectorAll("[class=fd-table--table]")[1]
     var header = []
     var rows = []
@@ -62,9 +64,7 @@ function scrapeStocksDataFromPage(slab) {
         header.push(table.rows[0].cells[i].innerText);
     }
 
-    var x = table.rows[0].insertCell(-1)
-    x.innerText = "Approx. Tax"
-    x.className = "fd-table--header-cell tooltip"
+    table.rows[0].insertCell(-1).outerHTML = "<th class='fd-table--header-cell tooltip'>Approx. Tax</th> "
 
     for (var i = 1; i < table.rows.length; i++) {
         var row = {};
