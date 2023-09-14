@@ -1,4 +1,4 @@
-let scrapeStocks = document.getElementById('scrapestocks')
+let scrapeStocks = document.getElementById('scrapestocks');
 
 scrapeStocks.addEventListener("click", async () => {
     // Get current active tab
@@ -7,12 +7,24 @@ scrapeStocks.addEventListener("click", async () => {
     // Execute script to get stock data on page
     chrome.scripting.executeScript({
         target: {tabId: tab.id},
-        func: scrapeStocksDataFromPage
+        func: scrapeStocksDataFromPage,
+		args: [getSlab()]
     })
 })
 
+function getSlab()
+{
+	var slabRateStr = document.querySelector('#slabSelect').value;
+	return slabRateStr;
+}
+
+//TODO clear the previously appended columns before reload.
+function deleteColumn() {
+
+}
+
 //Function to scrape stock data from page
-function scrapeStocksDataFromPage() {
+function scrapeStocksDataFromPage(slab) {
     function getCostInflationIndex(year) {
         switch(year){ 
             case 2001: return 100;
@@ -111,9 +123,10 @@ function scrapeStocksDataFromPage() {
             const profit = processedRow["currentValue"] - processedRow["buyValue"]
 
             // TODO: Give user option to select slab rate
-            const slabRate = 0.3
+            const slabRate = (slab == null || slab == NaN) ? 0.3 : slab;
+			
             if (profit > 0) {
-                tmp.innerText = processedRow["currency"] + (profit*slabRate).toFixed(2).toString()
+                tmp.innerText = processedRow["currency"] + (profit*slabRate).toFixed(3).toString()
             } else {
                 tmp.innerText = processedRow["currency"] + (0).toString()
             }
@@ -121,7 +134,4 @@ function scrapeStocksDataFromPage() {
 
         tmp.appendChild(tmptooltip)
     }
-    
-    console.log(processedRows)
-    // alert(JSON.stringify(rows));
 }
