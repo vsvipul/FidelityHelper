@@ -16,10 +16,11 @@ This extension will give the user an estimate of how much tax he/she will have t
 - Clone this repo
 - Enable developer mode and load the extension using "Load Unpacked" option. More info [here.](https://support.google.com/chrome/a/answer/2714278?hl=en#:~:text=Go%20to%20chrome%3A%2F%2Fextensions,the%20app%20or%20extension%20folder.)
 - Goto fidelity stock section and click on "View Share Details" option.
-<img src="./img/1.png"  width="500">
+![1](./img/1.png)
 - Open the chrome extension popup and enter your tax slab rate and the number of stocks you wish to withdraw. 
-<img src="./img/2.png"  width="500">
+![2](./img/2.png)
 - Click Execute and you'll see that the extension will populate a new column in the table showing tax applicable if you sell on the current date for a particular entry.
+![3](./img/3.png)
 - Also, it will show cumulative tax according to the number of stocks you wish to sell.
 
 
